@@ -1,0 +1,39 @@
+
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+ 
+  }
+  .container h2 {
+    text-align: center;
+  }
+  .container form {
+    margin-top: 20px;
+  }
+  .container form label {
+    display:block;
+    margin-bottom: 5px;
+  }
+  .container form input[type="text"],
+  .container form input[type="email"],
+  .container form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .container form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .container form button:hover {
+    background-color: #45a049;
+  }
+   .login {
+    margin-left: 30%;
+    margin-right: 30%;
+  }
