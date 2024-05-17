@@ -6,6 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
@@ -13,6 +14,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/', views.form, name='form'),
     path('about/', views.about, name='about'),
+    path('form/delete/<int:id_law>', views.delete, name='delete'),
+    path('form/insert/', views.insert, name='insert'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

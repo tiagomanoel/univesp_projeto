@@ -8,21 +8,56 @@
     <link rel="stylesheet" href="{% static "css/login.css" %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <title>Leis Municipal</title>
   </head>
   <body>
     <!-- <header></header> -->
-    <nav>
+    <nav class="navbar-top">
       <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
           <button class="botao btn-3 hover-border-1">
             <span><a href={% url 'index' %}>Voltar</a></span>
           </button>
-            <a class="link-light" href="{% url 'index' %}">Voltar</a>
         </div>
       </nav>
     </nav>
+    <div class="msg">
+      {% if messages %}
+      <ul class="messages">
+        {% for messages in messages %}
+          <li {% if messages.tags %}class="alert alert-{{messages.tags}}"{% endif %}>{{messages}}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
       <main>
+        <article class="title-personalizado">
+          <div class="menuMoblie" id="menuMobile">
+            <i class="bi bi-arrow-up-short" id="closeMenu"></i>
+            <div class="input-group input-group-sm mb-3">
+              <form class="input-mobile">
+                <div class="input-group mb-3">
+                  <input name="busca" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
+                </div>
+              </form>
+              <button id="login-menu"type="button" class="btn btn-light"><a href={% url 'account_login' %}>Entrar</a></button>  
+            </div>
+            
+          </div>
+          <a href={% url 'index' %}><i class="bi bi-arrow-return-left" id="menuIconLogin"></i> </a>
+          <div id="container-img">
+           
+          <div class="img"><img src="/media//imagens/balance1.png">
+          </div>
+           <h1 class="title-h1">Legislação Online</h1>
+          </div>
+          <p class="subtitle line">
+           <span><i class="icon-flash"></i>Taquaritinga - SP<i class="icon-flash"></i></span>
+          </p>
+        </article>
         <div class="login">      
             <div style="text-align: center;" class="container">
               <h1 class="title-h1">Logout</h1>
@@ -40,15 +75,16 @@
             </div>
           </div>
           
-          <footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Grupo006™</a>. All Rights Reserved.
+          <footer class="fixed bottom-0 left-0 z-20 w-full p-1 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 Grupo006™. All Rights Reserved.
             </span>
             <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                  <button class="botao btn-3 hover-border-5">
+                    <span><a href={% url 'about' %}>Sobre</a></span>
+                  </button>
                 </li>
-            </ul>
-          </footer>
+          </footer> 
           
           
           

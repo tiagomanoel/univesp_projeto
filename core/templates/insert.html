@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
     <title>Leis Municipal</title>
   </head>
   <body>
@@ -18,7 +16,7 @@
       <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
           <button class="botao btn-3 hover-border-1">
-            <span><a class="link-dark" href={% url 'index' %}>Voltar</a></span>
+            <span><a class="link-dark" href={% url 'form' %}>Voltar</a></span>
           </button>
           <button class="botao btn-3 hover-border-1">
             <span><a class="link-dark" href={% url 'account_logout' %}>Sair</a></span>
@@ -50,7 +48,7 @@
             </div>
             
           </div>
-          <a href={% url 'index' %}><i class="bi bi-arrow-return-left" id="menuIconLogin"></i> </a>
+          <a href={% url 'form' %}><i class="bi bi-arrow-return-left" id="menuIconLogin"></i> </a>
           <div id="container-img">
            
           <div class="img"><img src="/media//imagens/balance1.png">
@@ -61,56 +59,52 @@
            <span><i class="icon-flash"></i>Taquaritinga - SP<i class="icon-flash"></i></span>
           </p>
         </article>
-          <div class="container">
-            <button class="botao btn-3 hover-border-5">
-              <span><a class="link-dark" href={% url 'insert' %}>Inserir</a></span>
-            </button>
-            <table class="table table-striped table-hover">
-               <tr>
-                    <th>id_law</th>
-                    <th>Ano</th>
-                    <th>Numero</th>
-                    <th>Situação</th>
-                    <th>PDF</th>
-                    <th>Delete</th>
-                    
-               </tr>
-               {% for law in List %}
-               <tr>
-                    <td>{{law.id_law}}</td>
-                    <td>{{law.ano}}</td>
-                    <td>{{law.numero}}</td>
-                    <td>{{law.situacao}}</td>
-                    <td><button class="btn btn-dark"><a class="link-light" href="/media/{{law.arq}}" type="application/pdf">abrir</a></button></td>
-                    <td>
-                      
-                      <a class="link-danger" name="delete" href="/form/delete/{{law.id_law}}"><i class="bi bi-trash3"></i></a>
-                      
-                    </td>
-               </tr>
-               {% endfor %} 
-            </table>
+          <div class="main-form">
+            <div class="formulario1">
+                <form class="form1" action="{% url 'form' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+        
+                  <div class="form-item1 col-responsive">
+                    <input name="numero" class="input1" type="numero" required="required" id="name1"/>
+                    <label class="label1" for="nome">Numero</label>
+                  </div>
+                  
+                  <div class="form-item1 col-responsive">
+                    <input name="ano" class="input1" type="numero" required="required" id="email1"/>
+                    <label class="label1" for="email">Ano</label>
+                  </div>
+                  <div class="form-item1">
+                    <textarea class="textarea1" name="texto" required="required" id="textarea1"></textarea>
+                    <label class="label1" for="mensagem">Texto</label>
+                  </div>
 
-            <div class="navbar navbar-light bg-light" id="pagination">
-              {% if List.has_previous %}
-              <button type="button" class="btn btn-outline-dark"><a class="link-dark" href="?pages={{ List.previous_page_number }}">Voltar</a></button>
-              {% endif %}
-
-                <button type="button" class="btn btn-outline-dark"><a class="link-dark">{{ List.number }} de {{ List.paginator.num_pages }}</a></button>
-
-              {% if List.has_next %}
-
-              <button type="button" class="btn btn-outline-dark"><a class="link-dark" href="?pages={{ List.next_page_number }}">Próxima</a></button>
-    
-              {% endif %}
-    
+                  <div class="form-item1">
+                    <select  name="situacao" required="required" class="input1">
+                        <option selected></option>
+                        <option value="Em vigor">Em vigor</option>
+                        <option value="Em vigor, com alterações posteriores">Em vigor, com alterações posteriores</option>
+                        <option value="Em vigor, com regulamentação">Em vigor, com regulamentação</option>
+                        <option value="Declarada inconstitucional pelo TJ">Declarada inconstitucional pelo TJ</option>
+                        <option value="Revogada">Revogada</option>
+                      </select>
+                  </div>
+                  <div class="form-item1">
+                    <input name="my_file" class="form-control" type="file" required="required" id="formFile">
+                  </div>
+                  
+                  <div class="form-item1">
+                    <button class="botao btn-3 hover-border-2"><input class="botao1" type="submit" value="Enviar"/></button>
+                  </div>
+        
+                </form>
+            
 
             </div>
-          </div> 
-              
-      </main>
-      <button type="button" id="buttonSair" class="btn btn-dark"><a class="link-light" href={% url 'account_logout' %}>Sair</a></button>
 
+
+          
+      
+        </main>
 
     </body>
     </html>

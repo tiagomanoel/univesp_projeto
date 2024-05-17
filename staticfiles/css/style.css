@@ -1,7 +1,18 @@
+@keyframes animacao {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes fate {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box ;
+
 }
 
 body{
@@ -9,6 +20,7 @@ body{
    flex-wrap: wrap;
    margin: 3px;
    flex: 1 1 100vw; 
+
   
 }
 
@@ -22,12 +34,15 @@ body{
 nav {
     display: flex;
     flex: 1 1 100vw; 
+
+
     
 
 }
 
 main {
-    flex: 1 1 100vw; 
+    flex: 1 1 100vw;
+
 
 }    
 
@@ -36,7 +51,7 @@ aside {
     display: flex;
     margin: 3px;
     flex: 1 1 100vw; 
-    background: gray;
+
 }
 
 /*footer {
@@ -47,11 +62,21 @@ aside {
 }*/
 
 /* Table */
-main table {
-    max-width: 80%;
-    margin-left: 10%;
-    overflow-y: auto;
+#container-table  {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    height: 450px;
+    width: 95%;
+    margin-top: 0;
+
 }
+
+#container-table .table {
+  animation-name: animacao;
+  animation-duration: 1s;
+}
+
 
 /* título personalizado */
 .title-h1 {
@@ -60,6 +85,10 @@ main table {
     font-size: 2em;
     text-align: center;
     margin-bottom:20px;
+
+
+
+    
   
   }
   
@@ -67,7 +96,8 @@ main table {
   
     width: 100%;
     overflow: hidden;
-    margin: 0 auto 50px;
+    margin: 20px auto 50px;
+    
   
   }
   
@@ -76,6 +106,7 @@ main table {
   .line {
     line-height: 0.5;
     text-align: center;
+    margin-top: 10px;
   }
   
   .line span {
@@ -110,6 +141,7 @@ main table {
   
     font-family:'open_sanslight';
     text-align: center;
+
   
   }
   
@@ -158,8 +190,9 @@ main table {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin: 1px 25px 1px;
+    margin: -1px 25px 5px;
     min-width: 100px;
+
   
   }
   
@@ -175,6 +208,7 @@ main table {
       width: 100%;
       padding: 15px 20px;
       transition: 0.3s;
+
   
   }
   
@@ -182,13 +216,17 @@ main table {
 
   .btn-3 {
     padding: 5px;
+
     
   }
   
   .btn-3 span {
     color: #212529;
     background-color: rgb(255, 255, 255);
+    z-index: 3;
+
   }
+
   
   .btn-3::before,
   .btn-3::after {
@@ -229,14 +267,14 @@ main table {
   
   .botao.hover-border-2::before {
     bottom: 0; left: 0;
-    border-left: 1px solid rgb(0, 124, 255);
-    border-bottom: 1px solid rgb(0, 124, 255);
+    border-left: 2px solid #212529;
+    border-bottom: 2px solid #212529;
   }
   
   .botao.hover-border-2::after {
     top: 0; right: 0;
-    border-right: 1px solid rgb(0, 124, 255);
-    border-top: 1px solid rgb(0, 124, 255);
+    border-right: 2px solid #212529;
+    border-top: 2px solid #212529;
   }
   
   .botao.hover-border-2:hover::before,
@@ -308,15 +346,15 @@ main table {
   
   .botao.hover-border-5::before {
     top: 0; right: 0;
-    border-top: 1px solid rgb(0, 124, 255);
-    border-left: 1px solid rgb(0, 124, 255);
+    border-top: 1px solid #212529;
+    border-left: 1px solid #212529;
     transition: width 0.2s 0.5s ease-out, height 0.15s 0.35s linear, opacity 0s 0.7s;
   }
   
   .botao.hover-border-5::after {
     bottom: 0; left: 0px;
-    border-bottom: 1px solid rgb(0, 124, 255);
-    border-right: 1px solid rgb(0, 124, 255);
+    border-bottom: 1px solid #212529;
+    border-right: 1px solid #212529;
     transition: width 0.2s 0.15s linear, height 0.15s ease-in, opacity 0s 0.35s;
   }
   
@@ -333,3 +371,49 @@ main table {
   .botao.hover-border-5:hover::after {
     transition: width 0.2s 0.35s linear, height 0.15s 0.5s ease-out, opacity 0s 0.3s; 
   } 
+
+/* carrossel */
+.peaple {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+
+img {
+  width: 100px;
+  height: 100px;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+}
+
+#container-img{
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  align-items: stretch;
+
+}
+
+.brasao-img {
+  width: 100px;
+  height: 100px;
+}
+
+
+
+.step-links {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul.messages {
+  list-style: none;
+  animation-name: fate;
+  animation-duration: 4s;
+  opacity: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
